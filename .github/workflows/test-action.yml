@@ -16,9 +16,9 @@ jobs:
       steps:
         - name: Trigger deriv-app smoke tests from regentmarkets
           env:
-            test: "testEnv"
+            test_env: "testEnv"
           uses: actions/github-script@v6
           with:
             github-token: ${{ secrets.E2E_WORKFLOW_TOKEN }}
             script: |
-              console.log(`TEST: {process.env.test}`)
+              console.log(process.env.test_env)
