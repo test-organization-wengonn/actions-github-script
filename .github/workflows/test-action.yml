@@ -1,0 +1,24 @@
+name: Build test link and Deploy to Cloudflare Pages
+
+permissions:
+    actions: write # Necessary to cancel workflow executions
+    checks: write # Necessary to write reports
+    pull-requests: write # Necessary to comment on PRs
+    contents: read
+
+on:
+    issues: 
+
+
+jobs:
+    testscript:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Trigger deriv-app smoke tests from regentmarkets
+          env:
+            test: "testEnv"
+          uses: actions/github-script@v6
+          with:
+            github-token: ${{ secrets.E2E_WORKFLOW_TOKEN }}
+            script: |
+              console.log(`TEST: {process.env.test}`)
