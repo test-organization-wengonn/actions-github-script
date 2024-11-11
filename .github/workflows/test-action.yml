@@ -23,6 +23,18 @@ jobs:
             script: |
               console.log(process.env.test_env)
               
+    test-2:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Trigger deriv-app smoke tests from regentmarkets
+          env:
+            test_env: ${{github.event.issue.body}}
+          uses: actions/github-script@v6
+          with:
+            github-token: ${{ secrets.E2E_WORKFLOW_TOKEN }}
+            script: |
+              console.log("$test_env")
+              
     test_injection:
       runs-on: ubuntu-latest
       steps:
