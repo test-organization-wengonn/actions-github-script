@@ -1,11 +1,5 @@
 name: Demo Command Injection
 
-permissions:
-    actions: write # Necessary to cancel workflow executions
-    checks: write # Necessary to write reports
-    pull-requests: write # Necessary to comment on PRs
-    contents: read
-
 on:
     issues: 
 
@@ -16,23 +10,21 @@ jobs:
     demo-fix:
       runs-on: ubuntu-latest
       steps:
-        - name: Trigger deriv-app smoke tests from regentmarkets
+        - name: Demo Fix Injection
           env:
             test_env: ${{github.event.issue.body}}
           uses: actions/github-script@v6
           with:
-            github-token: ${{ secrets.E2E_WORKFLOW_TOKEN }}
             script: |
               console.log(process.env.test_env)
               
     test_injection:
       runs-on: ubuntu-latest
       steps:
-        - name: Trigger deriv-app smoke tests from regentmarkets
+        - name: Demo Injection
           env:
             test_env: ${{github.event.issue.body}}
           uses: actions/github-script@v6
           with:
-            github-token: ${{ secrets.E2E_WORKFLOW_TOKEN }}
             script: |
               console.log("${{ env.test_env }}")
