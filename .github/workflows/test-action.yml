@@ -13,7 +13,7 @@ env:
     DEMO_SECRET: ${{ secrets.DEMO_SECRET }}
 
 jobs:
-    testscript:
+    demo-fix:
       runs-on: ubuntu-latest
       steps:
         - name: Trigger deriv-app smoke tests from regentmarkets
