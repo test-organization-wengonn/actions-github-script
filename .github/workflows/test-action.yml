@@ -1,4 +1,4 @@
-name: Build test link and Deploy to Cloudflare Pages
+name: Demo Command Injection
 
 permissions:
     actions: write # Necessary to cancel workflow executions
